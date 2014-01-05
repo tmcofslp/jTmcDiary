@@ -3,6 +3,7 @@ package diary;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ComboBoxModel;
@@ -99,5 +100,10 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 		super.addElement(anObject);
 		ResetModell();
 	//	fireContentsChanged(arg0, arg1, arg2);
+	}
+	
+	
+	public List<String> getStringList() {
+		return _data;
 	}
 }

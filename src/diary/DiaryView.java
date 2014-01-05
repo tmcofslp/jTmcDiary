@@ -1,18 +1,16 @@
 package diary;
-import diary.CategoryModell;
-import diary.DiaryModell;
+//import JAutoCompletionTextArea;
 
-import java.awt.AWTEvent;
-import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,116 +18,82 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JViewport;
-import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.text.JTextComponent;
-import javax.swing.JTable;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.RowSpec;
-
-import javax.swing.JTextField;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.sql.Date;
-import java.text.DateFormat;
-
-import javax.swing.ListSelectionModel;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class DiaryView extends JFrame {
-
-	private JPanel contentPane;
+ 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//private JPanel contentPane;
 	private static JTable table;
 	private static JComboBox<String> cboCategoryVw = new JComboBox<String>();
 	private static JTextField txtContentVw = new JTextField();
-	private static JComboBox<String> cboCategoryEdit = new JComboBox<String>();
+	//private static JComboBox<String> cboCategoryEdit = new JComboBox<String>();
+	
+
 	private static JTextField txtDateEdit = new JTextField();
 	private static JTextArea txtContentEdit = new JTextArea();
 	private static JScrollPane scrContentEdit = new JScrollPane();
 	private static JButton btnAdd = new JButton("add");
 	private static JButton btnDel = new JButton("delete");
 	private static CategoryModell _category_modell;
+	private static JAutoCompletionTextArea taCatEdit = new JAutoCompletionTextArea();
 	private static DiaryModell _diary_modell;
 	private static boolean _updateContentEdit = true;
-	private JTextField textField;
 	protected JScrollPane spTable;
 	private static boolean updateContentEdit = true;
+	private static DiaryContentDocListener _catEditListener = new DiaryContentDocListener(1);
+	private static DiaryContentDocListener _doclistener = new DiaryContentDocListener(2);
 	
 	
-	private static CategoryEditListener _catEditLister = new CategoryEditListener(_diary_modell) 
-	{
-		@Override
-		protected void UpdateDm(DocumentEvent e)  
-		{
-			try {
-				if (_diary_modell != null && table.getSelectedRow() >= 0) {
-					final int oldRow = table.getSelectedRow();
-					updateContentEdit = false;
-					_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
-					//_category_modell.ResetModell();
-					
-					//cboCategoryEdit.revalidate();
-					System.out.println("document=" + e.getDocument().getText(0, e.getDocument().getLength()));
-					cboCategoryEdit.setSelectedItem(e.getDocument().getText(0, e.getDocument().getLength()));
-					_diary_modell.fireTableDataChanged();
-					_diary_modell.setValueAt(e.getDocument().getText(0, e.getDocument().getLength()), oldRow, 1);
-					SelectRow(oldRow);
-					
-					
-					//_category_modell.f
-					updateContentEdit = true;
-				}
-			} catch (Exception ex) {
-				System.err.println("error in updating content");
-				ex.printStackTrace();
-			}
-		
-			
-		}
-	};
+//	private static CategoryEditListener _catEditLister = new CategoryEditListener(_diary_modell) 
+//	{
+//		@Override
+//		protected void UpdateDm(DocumentEvent e)  
+//		{
+//			try {
+//				if (_diary_modell != null && table.getSelectedRow() >= 0) {
+//					final int oldRow = table.getSelectedRow();
+//					updateContentEdit = false;
+//					_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
+//					//_category_modell.ResetModell();
+//					
+//					//cboCategoryEdit.revalidate();
+//					System.out.println("document=" + e.getDocument().getText(0, e.getDocument().getLength()));
+//					
+//					//@TODO DK müssen wir da mit taCatEdit noch was machen?
+//					//cboCategoryEdit.setSelectedItem(e.getDocument().getText(0, e.getDocument().getLength()));
+//					
+//					_diary_modell.fireTableDataChanged();
+//					_diary_modell.setValueAt(e.getDocument().getText(0, e.getDocument().getLength()), oldRow, 1);
+//					SelectRow(oldRow);
+//					
+//					
+//					//_category_modell.f
+//					updateContentEdit = true;
+//				}
+//			} catch (Exception ex) {
+//				System.err.println("error in updating content");
+//				ex.printStackTrace();
+//			}
+//		
+//			
+//		}
+//	};
 	
-	private static ContentDocListener _doclistener = new ContentDocListener() {
-		@Override
-	    public void updateLog(DocumentEvent e, String action) {
-			try {
-				
-				if (_diary_modell != null && table.getSelectedRow() >= 0) {
-					final int oldRow = table.getSelectedRow();
-					updateContentEdit = false;
-					//_updateContentEdit = false;
-					//txtContentEdit.getDocument().removeDocumentListener(_doclistener);
-					// remove document listener tempory for not getting updates into table as ring
-						_diary_modell.fireTableDataChanged();
-						_diary_modell.setValueAt(e.getDocument().getText(0, e.getDocument().getLength()), oldRow, 2);
-
-						SelectRow(oldRow);
-					//	txtContentEdit.getDocument().addDocumentListener(_doclistener);
-						//_updateContentEdit = true;
-				   updateContentEdit = true;
-					
-				}
-				
-				} catch (Exception ex) {
-					System.err.println("error in updating content");
-					ex.printStackTrace();
-				}
-			
-		}
+	
 		
 
-	};
+
 	 
 	static {
 	btnAdd.addActionListener(new ActionListener() {
@@ -192,47 +156,51 @@ public class DiaryView extends JFrame {
 		}
 		
 	});
-	cboCategoryEdit.addKeyListener(new KeyAdapter() {
-		
 	
-		@Override
-		public void keyPressed (KeyEvent e) {
-			if (!e.isActionKey()) {
-				super.keyPressed(e);
-				
-			}
-		}
-		/*@Override
-		public void keyTyped(KeyEvent e) {
-			if(_diary_modell != null && table.getSelectedRow() >= 0) {
-				int oldRow = table.getSelectedRow();
-				
-				_diary_modell.setValueAt((String) cboCategoryEdit.getEditor().getItem(), table.getSelectedRow() , 1);
-				_diary_modell.fireTableDataChanged();
-				SelectRow(oldRow);
-				//table.setRowSelectionInterval(oldRow, oldRow);
-				_category_modell.ResetModell();
-				
-			}
-		}*/
-	});
+	//@TODO DK müssen wir beim Update vom taCatEdit noch was machen?
 	
-	cboCategoryEdit.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-		
-			if(_diary_modell != null && table.getSelectedRow() >= 0) {
-				int oldRow = table.getSelectedRow();
-				
-				_diary_modell.setValueAt((String) cboCategoryEdit.getSelectedItem(), table.getSelectedRow() , 1);
-				_diary_modell.fireTableDataChanged();
-				SelectRow(oldRow);
-				
-			}
-		}
-	});
+//	cboCategoryEdit.addKeyListener(new KeyAdapter() {
+//		
+//	
+//		@Override
+//		public void keyPressed (KeyEvent e) {
+//			if (!e.isActionKey()) {
+//				super.keyPressed(e);
+//				
+//			}
+//		}
+//		/*@Override
+//		public void keyTyped(KeyEvent e) {
+//			if(_diary_modell != null && table.getSelectedRow() >= 0) {
+//				int oldRow = table.getSelectedRow();
+//				
+//				_diary_modell.setValueAt((String) cboCategoryEdit.getEditor().getItem(), table.getSelectedRow() , 1);
+//				_diary_modell.fireTableDataChanged();
+//				SelectRow(oldRow);
+//				//table.setRowSelectionInterval(oldRow, oldRow);
+//				_category_modell.ResetModell();
+//				
+//			}
+//		}*/
+//	});
+	
+//	taCatEdit.addActionListener(new ActionListener() {
+//		public void actionPerformed(ActionEvent arg0) {
+//		
+//			if(_diary_modell != null && table.getSelectedRow() >= 0) {
+//				int oldRow = table.getSelectedRow();
+//				
+//				_diary_modell.setValueAt((String) cboCategoryEdit.getSelectedItem(), table.getSelectedRow() , 1);
+//				_diary_modell.fireTableDataChanged();
+//				SelectRow(oldRow);
+//				
+//			}
+//		}
+//	});
 	
 	txtContentEdit.getDocument().addDocumentListener(_doclistener);
-	((JTextComponent) cboCategoryEdit.getEditor().getEditorComponent()).getDocument().addDocumentListener(_catEditLister);
+	taCatEdit.getDocument().addDocumentListener(_catEditListener);
+	//((JTextComponent) cboCategoryEdit.getEditor().getEditorComponent()).getDocument().addDocumentListener(_catEditLister);
 }
 	public void AddContentVwListener(ActionListener l)
 	{
@@ -280,7 +248,7 @@ public class DiaryView extends JFrame {
 		if(cboCategoryVw != null) {
 			System.out.println("DiaryView::SetCategoryModell size=" + _category_modell.getSize());
 			cboCategoryVw.setModel(_category_modell);
-			cboCategoryEdit.setModel(_category_modell);
+			taCatEdit.setModel(_category_modell);
 		} else {
 			System.out.println("DiaryView::SetCategoryModel is null!!!");
 		}
@@ -313,7 +281,7 @@ public class DiaryView extends JFrame {
 	{
 		setMinimumSize(new Dimension(640,480));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JButton button;
+		//JButton button;
 		Container pane = getContentPane();
 		//JPanel pane 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -328,10 +296,10 @@ public class DiaryView extends JFrame {
 		e.anchor = GridBagConstraints.EAST;
 		GridBagConstraints f = new GridBagConstraints();
 		GridBagConstraints g = new GridBagConstraints();
-		GridBagConstraints gbch = new GridBagConstraints();
+	//	GridBagConstraints gbch = new GridBagConstraints();
 		GridBagConstraints gbci = new GridBagConstraints();
 		gbci.weighty = 100.0;
-		GridBagConstraints gbcj = new GridBagConstraints();
+	//GridBagConstraints gbcj = new GridBagConstraints();
 		JSplitPane splitPane; 
 		JSplitPane spEdit;
 		GridBagLayout gbl_pnlTbl = new GridBagLayout();
@@ -420,9 +388,13 @@ public class DiaryView extends JFrame {
 		//gbch.weightx = 0.0;
 		//gbch.gridx = 1;
 		//gbch.gridy = 2;
-		cboCategoryEdit.setEditable(true);
+		taCatEdit.setColumns(20);
+        taCatEdit.setLineWrap(true);
+        taCatEdit.setRows(1);
+        taCatEdit.setWrapStyleWord(true);
+		//cboCategoryEdit.setEditable(true);
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                txtDateEdit, cboCategoryEdit);
+                txtDateEdit, taCatEdit);
 		//splitPane.setOneTouchExpandable(true);
 		splitPane.setDividerLocation(150);
 		pnlEdit.add(splitPane, g);
@@ -527,21 +499,53 @@ public class DiaryView extends JFrame {
 		if (row >= 0 && row < _diary_modell.getRowCount()) {
 			// @TODO implement last save
 
-			
-			//if (_updateContentEdit) {
 			if (updateContentEdit) {
 				// TODO remove and add documentlistener for cboCategoryEdit
-				cboCategoryEdit.getEditor().setItem(_diary_modell.getValueAt(row, 1));
+				//cboCategoryEdit.getEditor().setItem(_diary_modell.getValueAt(row, 1));
+				taCatEdit.getDocument().removeDocumentListener(_catEditListener);
+				taCatEdit.setText(_diary_modell.getValueAt(row, 1).toString());
 				txtDateEdit.setText(_diary_modell.getValueAt(row, 0).toString());
 				txtContentEdit.getDocument().removeDocumentListener(_doclistener);
 				
 				txtContentEdit.setText(_diary_modell.getValueAt(row, 2).toString());
 				txtContentEdit.getDocument().addDocumentListener(_doclistener);
+				taCatEdit.getDocument().addDocumentListener(_catEditListener);
 			}
-			//}
-			//cboCategoryEdit.setv
-			//cboCategoryEdit.set
-			//cboCategoryEdit.setee
+
+		}
+	}
+	
+	protected static class DiaryContentDocListener extends ContentDocListener {
+
+		public DiaryContentDocListener(int newColNum) {
+			super(newColNum);
+		}
+		@Override
+	    public void updateLog(DocumentEvent e, String action) {
+			try {
+				
+				if (_diary_modell != null && table.getSelectedRow() >= 0) {
+					final int oldRow = table.getSelectedRow();
+					updateContentEdit = false;
+					//_updateContentEdit = false;
+					//txtContentEdit.getDocument().removeDocumentListener(_doclistener);
+					// remove document listener tempory for not getting updates into table as ring
+						_diary_modell.fireTableDataChanged();
+						_diary_modell.setValueAt(e.getDocument().getText(0, e.getDocument().getLength()), oldRow, getColNum());
+						
+						SelectRow(oldRow);
+					//	txtContentEdit.getDocument().addDocumentListener(_doclistener);
+						//_updateContentEdit = true;
+				   updateContentEdit = true;
+					
+				}
+				
+				} catch (Exception ex) {
+					System.err.println("error in updating content");
+					ex.printStackTrace();
+				}
+	
+			
 		}
 	}
 
