@@ -10,6 +10,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListDataListener;
 
+import org.hsqldb.lib.Sort;
+
 public class CategoryModell extends DefaultComboBoxModel<String>{
 	private static final long serialVersionUID = 2L;
 	private Vector<String> _data = new Vector<String>();
@@ -44,7 +46,7 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 
 				}
 				fireContentsChanged(this, 0,_data.size() - 1);
-				
+				System.out.println("resetModell() size=" + _data.size());
 
 				
 			} catch (Exception ex) {
@@ -96,8 +98,11 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 	@Override
 	public void addElement(String anObject) {
 		// TODO Auto-generated method stub
+		System.out.println("addlement(Stirng...) call!");
 		super.addElement(anObject);
-		ResetModell();
+		_data.add(anObject);
+		java.util.Collections.sort(_data);
+		//ResetModell();
 	//	fireContentsChanged(arg0, arg1, arg2);
 	}
 }

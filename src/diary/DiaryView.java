@@ -77,17 +77,20 @@ public class DiaryView extends JFrame {
 				if (_diary_modell != null && table.getSelectedRow() >= 0) {
 					final int oldRow = table.getSelectedRow();
 					updateContentEdit = false;
-					_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
+					//_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
 					//_category_modell.ResetModell();
 					
 					//cboCategoryEdit.revalidate();
 					System.out.println("document=" + e.getDocument().getText(0, e.getDocument().getLength()));
-					cboCategoryEdit.setSelectedItem(e.getDocument().getText(0, e.getDocument().getLength()));
+					
 					_diary_modell.fireTableDataChanged();
 					_diary_modell.setValueAt(e.getDocument().getText(0, e.getDocument().getLength()), oldRow, 1);
 					SelectRow(oldRow);
-					
-					
+					_category_modell.ResetModell();
+					_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
+					cboCategoryEdit.setModel(_category_modell);
+					cboCategoryEdit.setSelectedItem(e.getDocument().getText(0, e.getDocument().getLength()));
+						
 					//_category_modell.f
 					updateContentEdit = true;
 				}
