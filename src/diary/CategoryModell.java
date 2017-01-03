@@ -3,12 +3,10 @@ package diary;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.List;
 import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ListDataListener;
-
 
 public class CategoryModell extends DefaultComboBoxModel<String>{
 	private static final long serialVersionUID = 2L;
@@ -44,7 +42,7 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 
 				}
 				fireContentsChanged(this, 0,_data.size() - 1);
-				System.out.println("resetModell() size=" + _data.size());
+				
 
 				
 			} catch (Exception ex) {
@@ -96,16 +94,8 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 	@Override
 	public void addElement(String anObject) {
 		// TODO Auto-generated method stub
-		System.out.println("addlement(Stirng...) call!");
 		super.addElement(anObject);
-		_data.add(anObject);
-		java.util.Collections.sort(_data);
-		//ResetModell();
+		ResetModell();
 	//	fireContentsChanged(arg0, arg1, arg2);
-	}
-	
-	
-	public List<String> getStringList() {
-		return _data;
 	}
 }

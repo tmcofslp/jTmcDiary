@@ -30,10 +30,7 @@ import javax.swing.text.JTextComponent;
 
 public class DiaryView extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 177994815009626484L;
+	private JPanel contentPane;
 	private static JTable table;
 	private static JComboBox<String> cboCategoryVw = new JComboBox<String>();
 	private static JTextField txtContentVw = new JTextField();
@@ -45,6 +42,8 @@ public class DiaryView extends JFrame {
 	private static JButton btnDel = new JButton("delete");
 	private static CategoryModell _category_modell;
 	private static DiaryModell _diary_modell;
+	private static boolean _updateContentEdit = true;
+	private JTextField textField;
 	protected JScrollPane spTable;
 	private static boolean updateContentEdit = true;
 	
@@ -58,20 +57,17 @@ public class DiaryView extends JFrame {
 				if (_diary_modell != null && table.getSelectedRow() >= 0) {
 					final int oldRow = table.getSelectedRow();
 					updateContentEdit = false;
-					//_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
+					_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
 					//_category_modell.ResetModell();
 					
 					//cboCategoryEdit.revalidate();
 					System.out.println("document=" + e.getDocument().getText(0, e.getDocument().getLength()));
-					
+					cboCategoryEdit.setSelectedItem(e.getDocument().getText(0, e.getDocument().getLength()));
 					_diary_modell.fireTableDataChanged();
 					_diary_modell.setValueAt(e.getDocument().getText(0, e.getDocument().getLength()), oldRow, 1);
 					SelectRow(oldRow);
-					_category_modell.ResetModell();
-					_category_modell.addElement(e.getDocument().getText(0, e.getDocument().getLength()));
-					cboCategoryEdit.setModel(_category_modell);
-					cboCategoryEdit.setSelectedItem(e.getDocument().getText(0, e.getDocument().getLength()));
-						
+					
+					
 					//_category_modell.f
 					updateContentEdit = true;
 				}
@@ -121,7 +117,7 @@ public class DiaryView extends JFrame {
 			
 			if(_diary_modell != null ) {
 				//Date today;
-				
+				//TODO reset filter
 				String catToAdd;
 				
 				System.out.println("index=" + cboCategoryVw.getSelectedIndex());
@@ -297,6 +293,7 @@ public class DiaryView extends JFrame {
 	{
 		setMinimumSize(new Dimension(640,480));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JButton button;
 		Container pane = getContentPane();
 		//JPanel pane 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -311,8 +308,10 @@ public class DiaryView extends JFrame {
 		e.anchor = GridBagConstraints.EAST;
 		GridBagConstraints f = new GridBagConstraints();
 		GridBagConstraints g = new GridBagConstraints();
+		GridBagConstraints gbch = new GridBagConstraints();
 		GridBagConstraints gbci = new GridBagConstraints();
 		gbci.weighty = 100.0;
+		GridBagConstraints gbcj = new GridBagConstraints();
 		JSplitPane splitPane; 
 		JSplitPane spEdit;
 		GridBagLayout gbl_pnlTbl = new GridBagLayout();

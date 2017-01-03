@@ -5,15 +5,14 @@ package diary;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Vector;
+
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
-//import edu.emory.mathcs.backport.java.util.concurrent.TimeUnit;
-import java.util.Calendar;
 /**
  * @author tmc
  *
@@ -299,12 +298,12 @@ public class DiaryModell extends DefaultTableModel {
 				// TODO Auto-generated method stub
 				return _column_names[column];
 			}
-			@SuppressWarnings("unchecked")
-			public Class<? extends Object> getColumnClass(int c) {
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int c) {
 		    	try {
 		    		return getValueAt(0, c).getClass();
 		    	} catch (Exception e) {
-				    	 System.out.println("Error getting Column class for " + c + " from table");
+					 System.out.println("Error getting Column class for " + c + " from table");
 					 e.printStackTrace();
 					 return null;
 				}
