@@ -4,22 +4,16 @@
 package diary;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSetMetaData;
+import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.ResultSet;
-import java.text.DateFormat;
-
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.DefaultTableModel;
-
-import org.aspectj.runtime.internal.cflowstack.ThreadCounter;
-
-import edu.emory.mathcs.backport.java.util.concurrent.TimeUnit;
-
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Vector;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableModel;
+//import edu.emory.mathcs.backport.java.util.concurrent.TimeUnit;
+import java.util.Calendar;
 /**
  * @author tmc
  *
@@ -164,7 +158,7 @@ public class DiaryModell extends DefaultTableModel {
 					}
 		    	} else {
 		    		try {
-						TimeUnit.MILLISECONDS.sleep(SaveDatePoint);
+						Thread.sleep(SaveDatePoint);
 						System.out.println("waiting " + SaveDatePoint + " milliseconds");
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -306,11 +300,11 @@ public class DiaryModell extends DefaultTableModel {
 				return _column_names[column];
 			}
 			@SuppressWarnings("unchecked")
-			public Class getColumnClass(int c) {
+			public Class<? extends Object> getColumnClass(int c) {
 		    	try {
 		    		return getValueAt(0, c).getClass();
 		    	} catch (Exception e) {
-					 System.out.println("Error getting Column class for " + c + " from table");
+				    	 System.out.println("Error getting Column class for " + c + " from table");
 					 e.printStackTrace();
 					 return null;
 				}

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/usr/share/java"/>
 	<classpathentry kind="lib" path="/usr/share/java/annotations-api.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/annotations-api-6.0.35.jar"/>
@@ -67,7 +76,6 @@
 	<classpathentry kind="lib" path="/usr/share/java/commons-logging-api-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/commons-pool.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/commons-pool-1.5.6.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/derbyclient.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/dom4j.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/ecj.jar"/>
@@ -202,8 +210,6 @@
 	<classpathentry kind="lib" path="/usr/share/java/spring3-jdbc-3.x.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/spring3-transaction.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/spring3-transaction-3.x.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/sqlite-jdbc.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/tomcat-coyote.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/tomcat-coyote-6.0.35.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/tomcat-el-api-2.2.jar"/>
@@ -242,6 +248,10 @@
 	<classpathentry kind="lib" path="/usr/share/java/xpp3-xpath.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/xpp3-xpath-1.1.4c.jar"/>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-lang3.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>

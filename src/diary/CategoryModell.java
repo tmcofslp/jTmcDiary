@@ -3,14 +3,12 @@ package diary;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Vector;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.event.ListDataListener;
 
-import org.hsqldb.lib.Sort;
 
 public class CategoryModell extends DefaultComboBoxModel<String>{
 	private static final long serialVersionUID = 2L;
@@ -104,5 +102,10 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 		java.util.Collections.sort(_data);
 		//ResetModell();
 	//	fireContentsChanged(arg0, arg1, arg2);
+	}
+	
+	
+	public List<String> getStringList() {
+		return _data;
 	}
 }

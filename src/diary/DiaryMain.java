@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 public class DiaryMain 
 {
 	static DiaryController controller;
-	public static final String DB_PATH = "/media/truecrypt2/diary/diary.db";
+	public static final String DB_PATH = "/media/veracrypt2/diary/diary.db";
 	public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() 
@@ -13,6 +13,7 @@ public class DiaryMain
 			public void run() 
 			{
 				try {
+					@SuppressWarnings("unused")
 					DBController dbc = DBController.getInstance(DB_PATH);
 					controller = new DiaryController();
 					controller.ShowView();

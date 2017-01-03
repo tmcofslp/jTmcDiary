@@ -2,12 +2,11 @@ package diary;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.springframework.util.StringUtils;
+
 
 public class DiaryObject {
 	protected Date _date;

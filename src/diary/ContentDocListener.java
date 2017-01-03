@@ -6,7 +6,16 @@ import javax.swing.text.Document;
 
 class ContentDocListener implements DocumentListener {
     String newline = "\n";
- 
+    protected int colNum;
+   
+    
+    public ContentDocListener() 
+    {
+    	
+    }
+    public ContentDocListener(int newColNum) {
+    	setColNum(newColNum);
+    }
     @Override
     public void insertUpdate(DocumentEvent e) {
         updateLog(e, "inserted into");
@@ -28,6 +37,14 @@ class ContentDocListener implements DocumentListener {
             ((changeLength == 1) ? " " : "s ") +
             action + doc.getProperty("name") + "." + newline +
             "  Text length = " + doc.getLength() + newline);
+    }
+    
+    public void setColNum(int newColNum) {
+    	colNum = newColNum;
+    }
+    
+    public int getColNum() {
+    	return colNum;
     }
 	
 

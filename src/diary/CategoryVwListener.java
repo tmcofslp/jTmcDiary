@@ -26,6 +26,7 @@ public class CategoryVwListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
 		String CatContent = ((String)((JComboBox<String>)e.getSource()).getSelectedItem());
 		if(dm != null) {
 			if(CatContent.length() > 0) {

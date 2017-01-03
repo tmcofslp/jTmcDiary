@@ -1,18 +1,16 @@
 package diary;
-import diary.CategoryModell;
-import diary.DiaryModell;
-
-import java.awt.AWTEvent;
-import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Date;
+import java.text.DateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,37 +18,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JViewport;
-import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.JTextComponent;
-import javax.swing.JTable;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.RowSpec;
-
-import javax.swing.JTextField;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.sql.Date;
-import java.text.DateFormat;
-
-import javax.swing.ListSelectionModel;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class DiaryView extends JFrame {
 
-	private JPanel contentPane;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 177994815009626484L;
 	private static JTable table;
 	private static JComboBox<String> cboCategoryVw = new JComboBox<String>();
 	private static JTextField txtContentVw = new JTextField();
@@ -62,8 +45,6 @@ public class DiaryView extends JFrame {
 	private static JButton btnDel = new JButton("delete");
 	private static CategoryModell _category_modell;
 	private static DiaryModell _diary_modell;
-	private static boolean _updateContentEdit = true;
-	private JTextField textField;
 	protected JScrollPane spTable;
 	private static boolean updateContentEdit = true;
 	
@@ -316,7 +297,6 @@ public class DiaryView extends JFrame {
 	{
 		setMinimumSize(new Dimension(640,480));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JButton button;
 		Container pane = getContentPane();
 		//JPanel pane 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -331,10 +311,8 @@ public class DiaryView extends JFrame {
 		e.anchor = GridBagConstraints.EAST;
 		GridBagConstraints f = new GridBagConstraints();
 		GridBagConstraints g = new GridBagConstraints();
-		GridBagConstraints gbch = new GridBagConstraints();
 		GridBagConstraints gbci = new GridBagConstraints();
 		gbci.weighty = 100.0;
-		GridBagConstraints gbcj = new GridBagConstraints();
 		JSplitPane splitPane; 
 		JSplitPane spEdit;
 		GridBagLayout gbl_pnlTbl = new GridBagLayout();
