@@ -311,7 +311,6 @@ public class DiaryView extends JFrame {
 		GridBagConstraints gbch = new GridBagConstraints();
 		GridBagConstraints gbci = new GridBagConstraints();
 		gbci.weighty = 100.0;
-		GridBagConstraints gbcj = new GridBagConstraints();
 		JSplitPane splitPane; 
 		JSplitPane spEdit;
 		GridBagLayout gbl_pnlTbl = new GridBagLayout();

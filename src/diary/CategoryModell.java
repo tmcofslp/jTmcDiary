@@ -27,6 +27,7 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 	        return _data.elementAt(index);
 	}
 	 
+	
 	 public boolean ResetModell() 
 	 {
 			boolean ret = false;
@@ -65,7 +66,14 @@ public class CategoryModell extends DefaultComboBoxModel<String>{
 		// TODO Auto-generated method stub
 		
 	}
-
+	 public Vector<String> getStringVector() {
+		    Vector<String> localVariable = new Vector<String>();
+		    for(String classVar:_data) {		       
+		            localVariable.add((String)classVar);
+		    }
+		    
+		    return localVariable;
+	    }
 	@Override
 	public void removeListDataListener(ListDataListener arg0) {
 		// TODO Auto-generated method stub

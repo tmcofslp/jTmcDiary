@@ -6,75 +6,12 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/usr/share/java"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-codec.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-collections3.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-collections3-3.2.1.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-collections3-testframework.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-collections3-testframework-3.2.1.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-dbcp.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-dbcp-1.4.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-logging.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-logging-adapters.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-logging-api.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/commons-pool.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/ecj.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/eclipse-ecj.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/ee.foundation.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/ee.foundation-4.2.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/el-api-2.1.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/el-api-2.2.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/forms.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/geronimo-jpa-2.0-spec.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/geronimo-osgi-locator.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/geronimo-osgi-locator-1.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/geronimo-osgi-registry.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/geronimo-osgi-registry-1.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/java-atk-wrapper.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/java_uno.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/jsp-api-2.1.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/jsp-api-2.2.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/juh.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/jurt.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/libintl.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/osgi.compendium.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/osgi.compendium-4.3.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/osgi.core.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/osgi.core-4.3.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/ridl.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/servlet-api-2.5.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/servlet-api-3.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-coyote.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-el-api-2.2.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-i18n-es.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-i18n-fr.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-i18n-ja.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-jsp-api-2.2.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-juli.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/tomcat-servlet-api-3.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/unoloader.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xercesImpl-2.11.0.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xercesSamples.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-apis-1.4.01.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-apis-ext.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-apis-ext-1.4.01.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-commons-external.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-commons-external-1.4.01.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xmlParserAPIs.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-resolver.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/xml-resolver-1.2.jar"/>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/usr/share/java/commons-lang3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

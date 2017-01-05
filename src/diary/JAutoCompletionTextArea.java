@@ -25,7 +25,6 @@ DocumentListener {
 	private static final long serialVersionUID = 1L;
 	private static final String COMMIT_ACTION = "commit";
     private static enum Mode { INSERT, COMPLETION };
-    //private List<String> words=new ArrayList<String>(5);
     private Mode mode = Mode.INSERT;
     
     private CategoryModell _model = null;
@@ -51,6 +50,8 @@ DocumentListener {
     public void setModel(CategoryModell new_model) {
     	_model = new_model;
     }
+    
+   
     
 //    public void AddSuggestion(String word) {
 //    	words.add(word);
@@ -103,7 +104,7 @@ DocumentListener {
         }
         
         String prefix = content.substring(w + 1).toLowerCase();
-        int n = Collections.binarySearch(_model.getStringList(), prefix);
+        int n = Collections.binarySearch(_model.getStringVector(), prefix);
         //if (n < 0 && -n <= words.size()) {
         if (n < 0 && -n <= _model.getSize()) {
             //String match = words.get(-n - 1);
@@ -141,7 +142,12 @@ DocumentListener {
     
     
     private class CommitAction extends AbstractAction {
-    	@Override
+    	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
     	public void actionPerformed(ActionEvent arg0) {
             if (mode == Mode.COMPLETION) {
                 int pos = getSelectionEnd();
