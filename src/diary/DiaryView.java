@@ -30,7 +30,10 @@ import javax.swing.text.JTextComponent;
 
 public class DiaryView extends JFrame {
 
-	private JPanel contentPane;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1322509329652983839L;
 	private static JTable table;
 	private static JComboBox<String> cboCategoryVw = new JComboBox<String>();
 	private static JTextField txtContentVw = new JTextField();
@@ -42,8 +45,6 @@ public class DiaryView extends JFrame {
 	private static JButton btnDel = new JButton("delete");
 	private static CategoryModell _category_modell;
 	private static DiaryModell _diary_modell;
-	private static boolean _updateContentEdit = true;
-	private JTextField textField;
 	protected JScrollPane spTable;
 	private static boolean updateContentEdit = true;
 	
@@ -293,7 +294,6 @@ public class DiaryView extends JFrame {
 	{
 		setMinimumSize(new Dimension(640,480));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JButton button;
 		Container pane = getContentPane();
 		//JPanel pane 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -308,7 +308,6 @@ public class DiaryView extends JFrame {
 		e.anchor = GridBagConstraints.EAST;
 		GridBagConstraints f = new GridBagConstraints();
 		GridBagConstraints g = new GridBagConstraints();
-		GridBagConstraints gbch = new GridBagConstraints();
 		GridBagConstraints gbci = new GridBagConstraints();
 		gbci.weighty = 100.0;
 		JSplitPane splitPane; 
